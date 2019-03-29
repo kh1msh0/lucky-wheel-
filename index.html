@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Spin2Win Wheel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/style.css">
+
+    <script
+      src="http://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"
+    ></script>
+  
+
+
+<style>
+    .wheelContainer{
+        margin-left: -58%;
+        transition: 1s;
+    }
+.wheelSVG{
+    transform: rotate(90deg) !important; 
+    margin-left: -58%;
+    transition: 1s;
+}
+
+
+.wheelContainer:not(.nomargin):hover{
+    margin-left: -55%;
+}
+
+.nomargin{
+    margin-left: 0%;
+    
+}
+
+
+.toast{
+    position: absolute;
+    top:10px !important;
+    transform:translate(0%, 0%) matrix(1, 0, 0, 1, 0, 0) !important;
+}
+
+.goback{
+    /* position: absolute; */
+    /* align-self:flex-end; */
+    float: right;
+    color: aliceblue;
+}
+</style>
+</head>
+<body>
+       
+<div class="goback">go back</div>
+
+    <div class="wheelContainer" >
+        <svg class="wheelSVG" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" text-rendering="optimizeSpeed">
+            <defs>
+                <filter id="shadow" x="-100%" y="-100%" width="550%" height="550%">
+                    <feOffset in="SourceAlpha" dx="0" dy="0" result="offsetOut"></feOffset>
+                    <feGaussianBlur stdDeviation="9" in="offsetOut" result="drop" />
+                    <feColorMatrix in="drop" result="color-out" type="matrix" values="0 0 0 0   0
+              0 0 0 0   0 
+              0 0 0 0   0 
+              0 0 0 .3 0" />
+                    <feBlend in="SourceGraphic" in2="color-out" mode="normal" />
+                </filter>
+            </defs>
+            <g class="mainContainer">
+                <g class="wheel">
+                    <!-- <image  xlink:href="http://example.com/images/wheel_graphic.png" x="0%" y="0%" height="100%" width="100%"></image> -->
+                </g>
+            </g>
+            <g class="centerCircle" />
+            <image class="spinBtn" xlink:href="https://upload.wikimedia.org/wikipedia/commons/4/41/IMG_Mali_Roundel.svg" width="260" height="260" x="380" y="250" />
+            <g class="wheelOutline" />
+            <g class="pegContainer" opacity="1">
+                <path class="peg" fill="#EEEEEE" d="M22.139,0C5.623,0-1.523,15.572,0.269,27.037c3.392,21.707,21.87,42.232,21.87,42.232 s18.478-20.525,21.87-42.232C45.801,15.572,38.623,0,22.139,0z" />
+            </g>
+            <g class="valueContainer" />
+        </svg>
+        <!-- <button class="spinBtn">CLICK TO SPIN!</button> -->
+    </div>
+    <div class="toast">
+        </p>
+         </div> 
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/TweenMax.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/utils/Draggable.min.js'></script>
+    <script src='js/ThrowPropsPlugin.min.js'></script>
+    <script src='js/Spin2WinWheel.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/plugins/TextPlugin.min.js'></script>
+    <script src="js/index.js"></script>
+
+    <script>
+        
+
+        $('.wheelContainer').click(function(){
+            $('.wheelContainer').addClass('nomargin');
+
+        })      
+        
+        $('.goback').click(function(){
+            $('.wheelContainer').removeClass('nomargin');
+            console.log("traki")
+
+        })  
+
+        
+    </script>
+
+</body>
+
+</html>
